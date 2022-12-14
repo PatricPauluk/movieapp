@@ -1,0 +1,5 @@
+Algumas observações.
+
+Instalado biblioteca Axios para trabalhar com requisições HTTP:
+npm install axios
+As configurações ficam em src/services/api.js.
