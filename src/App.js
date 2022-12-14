@@ -1,5 +1,5 @@
 // Hooks
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 // CSS
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -15,76 +15,34 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import CardGroup from 'react-bootstrap/CardGroup';
 
+
 function App() {
 
-  const [ movies, setMovies ] = useState([]);
-  const [ searchValue, setSearchValue ] = useState('');
-
-  const [ moviesExample, setMoviesExample ] = useState([
-    {
-      "Title": "Silent Hill",
-      "Year": "2006",
-      "imdbID": "tt0384537",
-      "Type": "movie",
-      "Poster": "https://m.media-amazon.com/images/M/MV5BOWQzNTU3NGUtNDAxMi00ZjFjLTkyYWUtYjgwZDJiMDljZWY4XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg"
-    },
-    {
-      "Title": "Filme 2",
-      "Year": "2007",
-      "imdbID": "tt0384537",
-      "Type": "movie",
-      "Poster": "https://m.media-amazon.com/images/M/MV5BOWQzNTU3NGUtNDAxMi00ZjFjLTkyYWUtYjgwZDJiMDljZWY4XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg"
-    },
-    {
-      "Title": "Filme 3",
-      "Year": "2008",
-      "imdbID": "tt0384537",
-      "Type": "movie",
-      "Poster": "https://m.media-amazon.com/images/M/MV5BOWQzNTU3NGUtNDAxMi00ZjFjLTkyYWUtYjgwZDJiMDljZWY4XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg"
-    },
-    {
-      "Title": "Filme 3",
-      "Year": "2008",
-      "imdbID": "tt0384537",
-      "Type": "movie",
-      "Poster": "https://m.media-amazon.com/images/M/MV5BOWQzNTU3NGUtNDAxMi00ZjFjLTkyYWUtYjgwZDJiMDljZWY4XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg"
-    },
-    {
-      "Title": "Filme 3",
-      "Year": "2008",
-      "imdbID": "tt0384537",
-      "Type": "movie",
-      "Poster": "https://m.media-amazon.com/images/M/MV5BOWQzNTU3NGUtNDAxMi00ZjFjLTkyYWUtYjgwZDJiMDljZWY4XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg"
-    },
-    {
-      "Title": "Filme 3",
-      "Year": "2008",
-      "imdbID": "tt0384537",
-      "Type": "movie",
-      "Poster": "https://m.media-amazon.com/images/M/MV5BOWQzNTU3NGUtNDAxMi00ZjFjLTkyYWUtYjgwZDJiMDljZWY4XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg"
-    },
-    {
-      "Title": "Filme 3",
-      "Year": "2008",
-      "imdbID": "tt0384537",
-      "Type": "movie",
-      "Poster": "https://m.media-amazon.com/images/M/MV5BOWQzNTU3NGUtNDAxMi00ZjFjLTkyYWUtYjgwZDJiMDljZWY4XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg"
-    }
-  ]);
+  const [ movies, setMovies ] = useState([]); // recebe dados dos filmes
+  const [ searchValue, setSearchValue ] = useState(''); // busca dos filmes
+  const [ totalResults, setTotalResults ] = useState(0); // quantidade de resultados
 
   return (
     <div className='App'>
-
+      {/* MoviesNavbar tem o layout da navbar e a função de receber/exibir dados na busca */}
       <MoviesNavbar 
         searchValue={searchValue}
         setSearchValue={setSearchValue}
         setMovies={setMovies}
+        setTotalResults={setTotalResults}
       />
+
+      {/* Filmes listados dentro de um container conforme a busca do usuário */}
       <Container>
-        <h1 className='py-3'>Lista de Filmes</h1>
+        <h1 className='py-3'>Lista</h1>
+        {/* Se não tiver filmes para exibir, deixa uma mensgem para o usuário */}
+        {
+          movies.length === 0 ? <h5>Faça sua busca.</h5> :
+          movies.length > 1 ? <p>{totalResults} resultados</p> : <p></p>
+        }
         <Row>
           <CardGroup>
-            {movies.map(m => (
+            {movies.map((m, i) => (
               <Col md={2}>
                 <MovieItem
                   key={m.imdbID}
