@@ -6,8 +6,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 // Components
-import MoviesNavbar from './components/MoviesNavbar';
-import MovieItem from './components/MovieItem';
+import MoviesNavbar from './components/layout/MoviesNavbar';
+import MovieItem from './components/layout/MovieItem';
 
 // Bootstrap
 import Container from 'react-bootstrap/Container';
