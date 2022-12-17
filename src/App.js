@@ -21,6 +21,7 @@ function App() {
   const [ movies, setMovies ] = useState([]); // recebe dados dos filmes
   const [ searchValue, setSearchValue ] = useState(''); // busca dos filmes
   const [ totalResults, setTotalResults ] = useState(0); // quantidade de resultados
+  const [ myFavorites, setMyFavorites ] = useState([]); // salvar favoritos
 
   return (
     <div className='App'>
@@ -46,10 +47,13 @@ function App() {
               <Col md={2}>
                 <MovieItem
                   key={m.imdbID}
+                  imdbID={m.imdbID}
                   title={m.Title}
                   year={m.Year}
                   type={m.Type}
                   poster={m.Poster}
+                  myFavorites={myFavorites}
+                  setMyFavorites={setMyFavorites}
                 />
               </Col>
             ))}
