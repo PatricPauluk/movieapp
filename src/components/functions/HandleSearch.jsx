@@ -1,5 +1,5 @@
 // React
-import { useEffect } from 'react'
+import { useEffect } from 'react';
 
 // Bootstrap
 import Form from 'react-bootstrap/Form';
