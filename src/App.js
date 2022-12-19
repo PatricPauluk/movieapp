@@ -31,12 +31,13 @@ function App() {
         setSearchValue={setSearchValue}
         setMovies={setMovies}
         setTotalResults={setTotalResults}
+        myFavorites={myFavorites}
       />
 
       {/* Filmes listados dentro de um container conforme a busca do usuário */}
       <Container>
         <h1 className='py-3'>Lista</h1>
-        {/* Se não tiver filmes para exibir, deixa uma mensgem para o usuário */}
+        {/* Se não tiver filmes para exibir, deixa uma mensagem para o usuário */}
         {
           movies.length === 0 ? <h5>Faça sua busca.</h5> :
           movies.length > 1 ? <p>{totalResults} resultados</p> : <p></p>

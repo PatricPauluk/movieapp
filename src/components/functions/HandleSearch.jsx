@@ -18,6 +18,7 @@ const HandleSearch = ({ searchValue, setSearchValue, setMovies, setTotalResults 
       if (res.data.Response === "False") {
         throw new Error(res.data.Error)
       }
+      console.log(res.data.Search)
       setMovies(res.data.Search);
       setTotalResults(res.data.totalResults)
     } catch (e) {

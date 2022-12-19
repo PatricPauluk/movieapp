@@ -1,7 +1,8 @@
+// Bootstrap
 import Card from 'react-bootstrap/Card';
-import VerifyType from '../functions/VerifyType';
 
-import { useState } from 'react';
+// Functions
+import VerifyType from '../functions/VerifyType';
 import HandleFavoriteButton from '../functions/HandleFavoriteButton'
 
 const MovieItem = ({ imdbID, title, year, type, poster, myFavorites, setMyFavorites }) => {
@@ -17,12 +18,12 @@ const MovieItem = ({ imdbID, title, year, type, poster, myFavorites, setMyFavori
           {/* Função que traduz o tipo de conteúdo (filme, série ou jogo) */}
           <VerifyType type={type}/>
         </Card.Text>
+        {/* Contém o botão e todas as suas funções */}
         <HandleFavoriteButton 
           imdbID={imdbID}
           myFavorites={myFavorites}
           setMyFavorites={setMyFavorites}
         />
-        {/* <Button variant="danger" onClick={() => console.log(myFavorites)}>Favoritos <AiFillHeart/></Button> */}
         {imdbID}
       </Card.Body>
     </Card>
