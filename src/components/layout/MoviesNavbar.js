@@ -11,7 +11,14 @@ const MoviesNavbar = ({ searchValue, setSearchValue, setMovies, setTotalResults,
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
       <Container>
-        <Navbar.Brand href="#home">MovieApp</Navbar.Brand>
+        {/* Apenas limpa a barra de endereços ao clicar na logo. */}
+        <Navbar.Brand onClick={
+          () => searchValue ? setSearchValue('') :
+                searchValue === '' ? setSearchValue(' ') :
+                setSearchValue('')} 
+          href="#home">
+          MovieApp
+        </Navbar.Brand>
         {/* Botão que filtra e exibe os favoritos */}
         <ShowFavoritesButton
           setMovies={setMovies}

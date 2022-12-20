@@ -24,7 +24,7 @@ const MovieItem = ({ imdbID, title, year, type, poster, myFavoritesID, setMyFavo
           myFavoritesID={myFavoritesID}
           setMyFavoritesID={setMyFavoritesID}
         />
-        {imdbID}
+        {/* {imdbID} */}
       </Card.Body>
     </Card>
   )

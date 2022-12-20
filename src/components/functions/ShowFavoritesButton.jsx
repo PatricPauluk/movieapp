@@ -1,11 +1,12 @@
-// Hooks
-import { useState } from 'react';
-
 // Bootstrap
 import { Button } from 'react-bootstrap';
+import Nav from 'react-bootstrap/Nav';
 
 // API
 import api from '../../services/api';
+
+// Icons
+import { AiFillHeart } from "react-icons/ai";
 
 const ShowFavoritesButton = ({ setMovies, myFavoritesID }) => {
 
@@ -14,7 +15,6 @@ const ShowFavoritesButton = ({ setMovies, myFavoritesID }) => {
 
   const showFavorites = () => {
     favoriteList = [];
-
     /* Bom essa parte aqui merece uma nota bem destacada:
     Levei uns 3 dias pra fazer funcionar corretamente.
     Tentei criar uma lista através de um useState de array e também não dava certo,
@@ -42,7 +42,7 @@ const ShowFavoritesButton = ({ setMovies, myFavoritesID }) => {
 
         favoriteList = [...favoriteList, item]
         
-        console.log(favoriteList);
+        // console.log(favoriteList);
         setMovies(favoriteList);
       } catch (e) {
         console.log(e);
@@ -51,12 +51,11 @@ const ShowFavoritesButton = ({ setMovies, myFavoritesID }) => {
     
   }
 
-  
-  
-
   return (
     <>
-      <Button onClick={showFavorites}>Mostrar Favoritos (só no console)</Button>
+      <Nav className="justify-content-end flex-grow-1 pe-3">
+        <Button variant="danger" size="sm" onClick={showFavorites}>Mostrar Favoritos <AiFillHeart /></Button>
+      </Nav>
     </>
   )
 }
