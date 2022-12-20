@@ -5,7 +5,7 @@ import Card from 'react-bootstrap/Card';
 import VerifyType from '../functions/VerifyType';
 import HandleFavoriteButton from '../functions/HandleFavoriteButton'
 
-const MovieItem = ({ imdbID, title, year, type, poster, myFavorites, setMyFavorites }) => {
+const MovieItem = ({ imdbID, title, year, type, poster, myFavoritesID, setMyFavoritesID }) => {
   
   
   return (
@@ -21,8 +21,8 @@ const MovieItem = ({ imdbID, title, year, type, poster, myFavorites, setMyFavori
         {/* Contém o botão e todas as suas funções */}
         <HandleFavoriteButton 
           imdbID={imdbID}
-          myFavorites={myFavorites}
-          setMyFavorites={setMyFavorites}
+          myFavoritesID={myFavoritesID}
+          setMyFavoritesID={setMyFavoritesID}
         />
         {imdbID}
       </Card.Body>

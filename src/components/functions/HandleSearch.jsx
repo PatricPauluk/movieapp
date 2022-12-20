@@ -12,13 +12,11 @@ const HandleSearch = ({ searchValue, setSearchValue, setMovies, setTotalResults 
   // Função de busca: busca na API a cada letra que for digitada no campo de busca
   const handleSearch = async () => {
     try {
-      // console.log(searchValue)
       const res = await api.get("?s="+searchValue+"&apikey=42dbe614");
 
       if (res.data.Response === "False") {
         throw new Error(res.data.Error)
       }
-      console.log(res.data.Search)
       setMovies(res.data.Search);
       setTotalResults(res.data.totalResults)
     } catch (e) {

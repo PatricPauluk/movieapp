@@ -2,22 +2,21 @@
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 
-
 // Functions
 import HandleSearch from '../functions/HandleSearch';
-import HandleSearchFavorites from '../functions/HandleSearchFavorites'
+import ShowFavoritesButton from '../functions/ShowFavoritesButton';
 
-const MoviesNavbar = ({ searchValue, setSearchValue, movies, setMovies, setTotalResults, myFavorites }) => {
+const MoviesNavbar = ({ searchValue, setSearchValue, setMovies, setTotalResults, myFavoritesID }) => {
 
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
       <Container>
         <Navbar.Brand href="#home">MovieApp</Navbar.Brand>
-          <HandleSearchFavorites 
-            myFavorites={myFavorites} 
-            movies={movies}
-            setMovies={setMovies}
-          />
+        {/* Botão que filtra e exibe os favoritos */}
+        <ShowFavoritesButton
+          setMovies={setMovies}
+          myFavoritesID={myFavoritesID}
+        />
         {/* Campo form de busca contendo as funções para retornar dados da API */}
         <HandleSearch 
           searchValue={searchValue}

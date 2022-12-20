@@ -21,8 +21,20 @@ function App() {
   const [ movies, setMovies ] = useState([]); // recebe dados dos filmes
   const [ searchValue, setSearchValue ] = useState(''); // busca dos filmes
   const [ totalResults, setTotalResults ] = useState(0); // quantidade de resultados
-  const [ myFavorites, setMyFavorites ] = useState([]); // salvar favoritos
+  const [ myFavoritesID, setMyFavoritesID ] = useState([]); // salvar favoritos
 
+  const desenvolvedor = () => {
+    console.log("\n\n");
+    console.log("---------- DADOS ----------");
+    console.log("Campo de busca:");
+    console.log(searchValue);
+    console.log("Filmes na lista:");
+    console.log(movies);
+    console.log("imdbID meus favoritos: ");
+    console.log(myFavoritesID);
+    console.log("\n\n");
+  }
+  
   return (
     <div className='App'>
       {/* MoviesNavbar tem o layout da navbar e a função de receber/exibir dados na busca */}
@@ -31,9 +43,9 @@ function App() {
         setSearchValue={setSearchValue}
         setMovies={setMovies}
         setTotalResults={setTotalResults}
-        myFavorites={myFavorites}
+        myFavoritesID={myFavoritesID}
       />
-
+      <button onClick={desenvolvedor}>Console</button>
       {/* Filmes listados dentro de um container conforme a busca do usuário */}
       <Container>
         <h1 className='py-3'>Lista</h1>
@@ -44,7 +56,7 @@ function App() {
         }
         <Row>
           <CardGroup>
-            {movies.map((m, i) => (
+            {movies.map(m => (
               <Col md={2}>
                 <MovieItem
                   key={m.imdbID}
@@ -53,8 +65,8 @@ function App() {
                   year={m.Year}
                   type={m.Type}
                   poster={m.Poster}
-                  myFavorites={myFavorites}
-                  setMyFavorites={setMyFavorites}
+                  myFavoritesID={myFavoritesID}
+                  setMyFavoritesID={setMyFavoritesID}
                 />
               </Col>
             ))}

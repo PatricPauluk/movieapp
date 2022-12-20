@@ -7,11 +7,11 @@ import Button from 'react-bootstrap/Button';
 // Icons
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 
-const HandleFavoriteButton = ({ imdbID, myFavorites, setMyFavorites }) => {
+const HandleFavoriteButton = ({ imdbID, myFavoritesID, setMyFavoritesID }) => {
 
   // É meu favorito? Retorna true ou false
   const isFavorite = () => {
-    return myFavorites.indexOf(imdbID) > -1 ? false : true;
+    return myFavoritesID.indexOf(imdbID) > -1 ? false : true;
   }
 
   // As constantes definem o estilo inicial do botão
@@ -22,21 +22,19 @@ const HandleFavoriteButton = ({ imdbID, myFavorites, setMyFavorites }) => {
   const handleFavorite = () => {
     if (isFavorite()) {
       buttonStyle();
-      setMyFavorites([...myFavorites, imdbID]);
+      setMyFavoritesID([...myFavoritesID, imdbID]);
     } else {
       buttonStyle();
-      myFavorites.splice(myFavorites.indexOf(imdbID), 1);
+      myFavoritesID.splice(myFavoritesID.indexOf(imdbID), 1);
     }
   }
 
   // Edita o estilo do botão (caso seja favorito, ou não)
   const buttonStyle = () => {
     if (isFavorite()) {
-      console.log('fiquei vermelho')
       setVariant('danger');
       setHeartIco(<AiFillHeart />);
     } else {
-      console.log('fiquei branco')
       setVariant('outline-light');
       setHeartIco(<AiOutlineHeart />);
     }
